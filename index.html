@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Image Gallery Page</title> 
+    <link rel="stylesheet" href="./index.css"  type="text/css">
+</head>
+  <body>
+    <div class="gallery-wrap">
+      <img src="./images/back.png" id="backbutton">
+      <div class="gallery">
+        <div>
+            <span><img src="./images/image-1.png"></span>
+            <span><img src="./images/image-2.png"></span>
+            <span><img src="./images/image-3.png"></span>
+        </div>
+        <div>
+            <span><img src="./images/image-4.png"></span>
+            <span><img src="./images/image-5.png"></span>
+            <span><img src="./images/image-6.png"></span>
+        </div>
+      </div>
+      <img src="./images/next.png" id="nextbutton">
+  </div>
+  <script>
+    let scrollContainer = document.querySelector('.gallery');
+    let backbutton = document.getElementById('backbutton');
+    let nextbutton = document.getElementById('nextbutton');
+
+
+    scrollContainer.addEventListener("wheel", (evt) =>{
+    evt.preventDefault();
+    scrollContainer.scrollLeft += evt.deltaY;
+    scrollContainer.style.scrollBehavior = "auto";
+  });
+//to move to the next image set on clicking the button
+    nextbutton.addEventListener("click",()=>{
+      scrollContainer.style.scrollBehavior = "smooth";
+    //width is at 900 so it moves at 900
+      scrollContainer.scrollLeft += 900;
+    });
+
+    backbutton.addEventListener("click",()=>{
+      scrollContainer.style.scrollBehavior = "smooth";
+      scrollContainer.scrollLeft -= 900;
+    });
+
+
+
+    </script>
+  </body>
+</html>
